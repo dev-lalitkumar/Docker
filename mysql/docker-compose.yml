@@ -1,0 +1,17 @@
+name: "mysql-stack"
+
+services:
+  mysql-container:
+    image: mysql:8.0.35
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql-data:
+    name: mysql-data

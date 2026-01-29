@@ -1,0 +1,21 @@
+name: mongodb-stack
+
+services:
+  mongodb:
+    container_name: mongodb-container
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb # Explicitly named for config storage
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+volumes:
+  mongodb-data:
+    name: mongodb-data
+  mongodb-config:
+    name: mongodb-config
